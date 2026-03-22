@@ -1,20 +1,17 @@
-function Filtro(props) {
-
-    const categoriaHandler = (event) =>{
-        props.modC(event.target.value)
-    }
-
-    return (
-            <select defaultValue="todas" onChange={categoriaHandler}>
-                <option value="todas">todas</option>
-                <option value="accion">accion</option>
-                <option value="aventuras">aventuras</option>
-                <option value="misterio">misterio</option>
-                <option value="romance">romance</option>
-                <option value="terror">terror</option>
-            </select>
-
-    )
+function Filtro({ categorias, categoriaActiva, onCambio }) {
+  return (
+    <div className="filtro-container">
+      {categorias.map(cat => (
+        <button
+          key={cat}
+          className={`filtro-btn ${categoriaActiva === cat ? 'activo' : ''}`}
+          onClick={() => onCambio(cat)}
+        >
+          {cat === 'todas' ? 'Todas' : cat}
+        </button>
+      ))}
+    </div>
+  )
 }
 
 export default Filtro
