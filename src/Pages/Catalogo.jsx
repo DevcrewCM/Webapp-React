@@ -10,13 +10,21 @@ function Catalogo() {
   const [categoria, setCategoria] = useState('todas')
   const [loading, setLoading] = useState(true)
   const [busqueda, setBusqueda] = useState('')
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const cargar = async () => {
       setLoading(true)
-      const data = await getPeliculas()
-      setPeliculas(data)
-      setLoading(false)
+      setError(null)
+      try {
+        const data = await getPeliculas()
+        setPeliculas(data)
+      } catch (err) {
+        console.error('Error cargando películas:', err)
+        setError(err.message || 'Error desconocido al conectar con la base de datos')
+      } finally {
+        setLoading(false)
+      }
     }
     cargar()
   }, [])
@@ -28,6 +36,17 @@ function Catalogo() {
   })
 
   if (loading) return <div className="loading"><div className="spinner"></div></div>
+
+  if (error) return (
+    <div className="page-container">
+      <div className="empty-state">
+        <div className="empty-icon"></div>
+        <h2>Error al cargar películas</h2>
+        <p style={{color: '#e94560', fontSize: '0.85rem', maxWidth: '500px', wordBreak: 'break-all'}}>{error}</p>
+        <button onClick={() => window.location.reload()} style={{marginTop: '1rem', padding: '0.5rem 1.5rem', background: '#e94560', color: '#fff', border: 'none', borderRadius: '8px', cursor: 'pointer'}}>Reintentar</button>
+      </div>
+    </div>
+  )
 
   return (
     <div className="page-container">

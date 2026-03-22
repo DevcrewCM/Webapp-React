@@ -25,8 +25,8 @@ function Contacto() {
           <div className="contact-card">
             <div className="contact-icon">D</div>
             <h3>Dirección</h3>
-            <p>Calle del Cine, 42</p>
-            <p>28001 Madrid, España</p>
+            <p>Av navarra, 42</p>
+            <p>31006 Pamplona, Navarra, España</p>
           </div>
         </div>
 

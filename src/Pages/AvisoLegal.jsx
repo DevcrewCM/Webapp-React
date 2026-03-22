@@ -18,7 +18,7 @@ function AvisoLegal() {
           <ul>
             <li><strong>Razón social:</strong> CineVOD S.L.</li>
             <li><strong>CIF:</strong> B-12345678</li>
-            <li><strong>Domicilio:</strong> Calle del Cine, 42, 28001 Madrid, España</li>
+            <li><strong>Domicilio:</strong> Av navarra, 42, 31006 Pamplona, Navarra, España</li>
             <li><strong>Email:</strong> contacto@cinevod.es</li>
             <li><strong>Teléfono:</strong> +34 900 123 456</li>
           </ul>
